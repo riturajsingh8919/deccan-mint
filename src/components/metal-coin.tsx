@@ -11,7 +11,7 @@ export function MetalCoin({
 }) {
   const gold = metal === "gold";
   return (
-    <div className={`relative aspect-square overflow-hidden rounded-full bg-[#e8dfcb] shadow-[0_18px_35px_#69461e24] ${className}`}>
+    <div className={`relative aspect-square overflow-hidden rounded-full bg-gold-soft shadow-[0_18px_35px_#41404226] ${className}`}>
       <Image
         src={gold ? "/images/gold-editorial.jpg" : "/images/silver-coins.jpg"}
         alt={gold ? "Illustrative gold coin with a sculpted dragon design" : "Illustrative silver coin with a sculpted lion design"}

@@ -29,25 +29,24 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gold/20 bg-white/95 backdrop-blur-xl">
-      <div className="border-b border-[#e6d5b7] bg-[#f4ead7]">
+    <header className="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur-xl">
+      <div className="border-b border-line bg-parchment">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-2 text-base sm:px-10 lg:px-14">
-          <p className="hidden text-[#776346] md:block">Gold, silver &amp; meaningful gifts</p>
-          <div className="flex w-full items-center justify-between gap-5 md:w-auto"><a href="tel:+919030609236" className="inline-flex items-center gap-2 text-[#5f492c]"><Phone size={16} />+91 90306 09236</a><a href="https://wa.me/919030609236" target="_blank" rel="noopener noreferrer" aria-label="Speak to us on WhatsApp" className="inline-flex items-center gap-2 text-[#5f492c]"><MessageCircle size={18} /><span className="hidden sm:inline">Chat with us</span></a></div>
+          <p className="hidden text-muted md:block">Gold, silver &amp; meaningful gifts</p>
+          <div className="flex w-full items-center justify-between gap-5 md:w-auto"><a href="tel:+919030609236" className="inline-flex items-center gap-2 text-charcoal hover:text-gold-dark"><Phone size={16} />+91 90306 09236</a><a href="https://wa.me/919030609236" target="_blank" rel="noopener noreferrer" aria-label="Speak to us on WhatsApp" className="inline-flex items-center gap-2 text-charcoal hover:text-gold-dark"><MessageCircle size={18} /><span className="hidden sm:inline">Chat with us</span></a></div>
         </div>
       </div>
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-2 px-5 py-1 sm:gap-5 sm:px-10 sm:py-1.5 lg:px-14">
         <Logo compact />
         <nav aria-label="Main navigation" className="hidden items-center gap-6 xl:flex xl:gap-8">
-          {navigation.map(item => <a key={item.id} href={`#${item.id}`} aria-current={active === item.id ? "location" : undefined} className={`relative py-3 text-base font-medium transition-colors after:absolute after:right-0 after:bottom-1 after:left-0 after:h-px after:origin-left after:bg-gold after:transition-transform hover:text-gold-dark ${active === item.id ? "text-gold-dark after:scale-x-100" : "text-espresso/80 after:scale-x-0 hover:after:scale-x-100"}`}>{item.label}</a>)}
+          {navigation.map(item => <a key={item.id} href={`#${item.id}`} aria-current={active === item.id ? "location" : undefined} className={`relative py-3 text-base font-medium transition-colors after:absolute after:right-0 after:bottom-1 after:left-0 after:h-px after:origin-left after:bg-gold after:transition-transform hover:text-gold-dark ${active === item.id ? "text-gold-dark after:scale-x-100" : "text-charcoal after:scale-x-0 hover:after:scale-x-100"}`}>{item.label}</a>)}
         </nav>
-        <a href="#contact" className="group hidden min-h-12 items-center gap-4 rounded-md bg-[#93682f] px-5 text-base font-semibold text-white transition-colors hover:bg-[#795323] md:inline-flex">Enquire now <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></a>
-        <button type="button" aria-label="Open navigation menu" aria-controls="mobile-navigation" onClick={() => dialog.current?.showModal()} className="-mr-2 flex size-10 shrink-0 items-center justify-center text-espresso xl:hidden"><Menu size={23} strokeWidth={1.5} /></button>
+        <a href="#contact" className="brand-action group hidden min-h-12 items-center gap-4 rounded-md px-5 text-base font-semibold md:inline-flex">Enquire now <ArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></a>
+        <button type="button" aria-label="Open navigation menu" aria-controls="mobile-navigation" onClick={() => dialog.current?.showModal()} className="-mr-2 flex size-10 shrink-0 items-center justify-center text-charcoal xl:hidden"><Menu size={23} strokeWidth={1.5} /></button>
       </div>
-      <dialog ref={dialog} id="mobile-navigation" aria-label="Navigation menu" className="fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none flex-col bg-ivory px-6 py-6 text-espresso backdrop:bg-espresso/30 open:flex">
-        <div className="flex items-center justify-between gap-2"><Logo compact /><button type="button" aria-label="Close navigation menu" onClick={() => dialog.current?.close()} className="flex size-10 shrink-0 items-center justify-center"><X size={24} strokeWidth={1.5} /></button></div>
-        <p className="mt-16 text-base tracking-[0.2em] text-gold-dark uppercase">Discover Deccan Mint</p>
-        <nav aria-label="Mobile navigation" className="mt-5 flex flex-col">{[...navigation, { label: "FAQs", id: "faqs" }, { label: "Get in touch", id: "contact" }].map((item, i) => <a key={item.id} href={`#${item.id}`} onClick={() => dialog.current?.close()} className="flex items-center justify-between border-b border-gold/20 py-4 font-display text-[33px]"><span><span className="mr-5 align-middle font-sans text-base text-gold-dark">0{i + 1}</span>{item.label}</span><ArrowUpRight size={19} strokeWidth={1.2} /></a>)}</nav>
+      <dialog ref={dialog} id="mobile-navigation" aria-label="Navigation menu" className="fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none flex-col bg-ivory px-6 py-6 text-charcoal backdrop:bg-ink/30 open:flex">
+        <div className="flex items-center justify-between gap-2"><Logo compact onClick={() => dialog.current?.close()} /><button type="button" aria-label="Close navigation menu" onClick={() => dialog.current?.close()} className="flex size-10 shrink-0 items-center justify-center"><X size={24} strokeWidth={1.5} /></button></div>
+        <nav aria-label="Mobile navigation" className="mt-8 flex flex-col border-t border-line">{[...navigation, { label: "FAQs", id: "faqs" }, { label: "Get in touch", id: "contact" }].map(item => <a key={item.id} href={`#${item.id}`} onClick={() => dialog.current?.close()} className="flex items-center justify-between border-b border-line py-4 font-display text-[29px]"><span>{item.label}</span><ArrowUpRight size={19} strokeWidth={1.5} className="text-gold-dark" /></a>)}</nav>
         <a href="tel:+919030609236" className="mt-10 inline-flex items-center gap-3 text-base"><Phone size={15} />+91 90306 09236</a>
         <p className="mt-auto pt-8 text-base text-muted">deccanmint.com</p>
       </dialog>
@@ -97,7 +96,7 @@ export function CollectionExplorer() {
   return (
     <div>
       <p className="mb-4 text-center text-base font-medium">Choose a collection</p>
-      <div role="tablist" aria-label="Explore our collections" className="mx-auto mb-8 grid max-w-[720px] grid-cols-3 gap-2 rounded-xl border border-gold/25 bg-[#f7f1e7] p-2 sm:gap-3 sm:p-3">
+      <div role="tablist" aria-label="Explore our collections" className="mx-auto mb-8 grid max-w-[720px] grid-cols-3 gap-2 rounded-xl border border-line bg-parchment p-2 sm:gap-3 sm:p-3">
         {collectionOptions.map((item, i) => (
           <button
             key={item.id}
@@ -121,7 +120,7 @@ export function CollectionExplorer() {
               setSelected(next);
               buttons.current[next]?.focus();
             }}
-            className={`flex min-h-14 min-w-0 items-center justify-center gap-3 rounded-md border px-2 py-3 text-center text-base font-semibold transition-all sm:min-h-16 sm:px-5 ${selected === i ? "border-[#93682f] bg-[#93682f] text-white shadow-sm" : "border-gold/35 bg-white text-espresso hover:border-gold-dark hover:bg-[#faf6ed] hover:shadow-sm"}`}
+            className={`flex min-h-14 min-w-0 items-center justify-center gap-3 rounded-md border px-2 py-3 text-center text-base font-semibold transition-all sm:min-h-16 sm:px-5 ${selected === i ? "border-gold brand-action shadow-sm" : "border-gold/40 bg-white text-charcoal hover:border-gold-dark hover:bg-gold-soft hover:shadow-sm"}`}
           >
             <span>{item.id === "gold" ? "Gold" : item.id === "silver" ? "Silver" : "Gifting"}</span>
             {selected === i && <Check aria-hidden="true" size={18} className="hidden shrink-0 sm:block" />}
@@ -130,17 +129,17 @@ export function CollectionExplorer() {
       </div>
       {collectionOptions.map((item, i) => (
         <div key={item.id} id={`collection-panel-${item.id}`} role="tabpanel" aria-labelledby={`collection-tab-${item.id}`} hidden={selected !== i}>
-          {selected === i && <div className="grid overflow-hidden rounded-2xl border border-[#e6d9c4] bg-white shadow-[0_8px_35px_#6d492708] md:grid-cols-2">
-            <div className={`relative flex min-h-[350px] items-center justify-center overflow-hidden sm:min-h-[460px] ${collection.id === "silver" ? "bg-[linear-gradient(145deg,#fafbfa,#e8ece8)]" : "bg-[linear-gradient(145deg,#fffcf5,#f0dfbd)]"}`}>
+          {selected === i && <div className="grid overflow-hidden rounded-2xl border border-line bg-white shadow-sm md:grid-cols-2">
+            <div className={`relative flex min-h-[350px] items-center justify-center overflow-hidden sm:min-h-[460px] ${collection.id === "silver" ? "bg-linear-to-br from-white to-[#e9e8ea]" : "bg-linear-to-br from-ivory to-gold-soft"}`}>
               {collection.id === "gifting" ? <Image src={collection.image} alt={collection.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-[65%_70%]" /> : <MetalCoin metal={collection.id === "silver" ? "silver" : "gold"} className="my-10 w-[68%] max-w-[350px] -rotate-6 transition-transform duration-700 hover:rotate-0 hover:scale-[1.03]" />}
-              <span className="absolute top-6 left-6 rounded-md border border-white/60 bg-white/75 px-3 py-2 text-base font-medium text-[#735831]">{collection.id === "gifting" ? "Thoughtful gifting" : collection.id === "gold" ? "The gold collection" : "The silver collection"}</span>
+              <span className="absolute top-6 left-6 rounded-md border border-white/60 bg-white/75 px-3 py-2 text-base font-medium text-charcoal">{collection.id === "gifting" ? "Thoughtful gifting" : collection.id === "gold" ? "The gold collection" : "The silver collection"}</span>
             </div>
             <div className="flex flex-col justify-center px-6 py-8 sm:px-10 lg:px-12 lg:py-11">
               <p className="text-base font-medium text-gold-dark">{collection.category}</p>
               <h3 className="mt-3 font-display text-[32px] leading-tight tracking-[-0.025em] lg:text-[42px]">{collection.name}</h3>
               <p className="mt-4 text-base leading-[1.8] text-muted">{collection.description}</p>
-              <div className="mt-5 grid gap-3 border-t border-gold/20 pt-5">{["Discuss available designs & weights", "Understand purity & product details", collection.id === "gifting" ? "Find an option for your occasion" : "Choose for yourself or for gifting"].map(detail => <p key={detail} className="flex items-start gap-3 text-base text-espresso/85"><Check size={18} className="mt-1 shrink-0 text-gold-dark" />{detail}</p>)}</div>
-              <a href="#contact" data-interest={collection.id === "gifting" ? "Gifting" : collection.name} className="group mt-7 inline-flex min-h-13 items-center justify-center gap-5 self-start rounded-md bg-[#93682f] px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-[#795323]">{collection.id === "gifting" ? "Enquire about gifting" : `Enquire about ${collection.id} coins`}<ArrowUpRight size={18} /></a>
+              <div className="mt-5 grid gap-3 border-t border-line pt-5">{["Discuss available designs & weights", "Understand purity & product details", collection.id === "gifting" ? "Find an option for your occasion" : "Choose for yourself or for gifting"].map(detail => <p key={detail} className="flex items-start gap-3 text-base text-charcoal"><Check size={18} className="mt-1 shrink-0 text-gold-dark" />{detail}</p>)}</div>
+              <a href="#contact" data-interest={collection.id === "gifting" ? "Gifting" : collection.name} className="group mt-7 inline-flex min-h-13 items-center justify-center gap-5 self-start rounded-md brand-action px-5 py-3 text-base font-semibold">{collection.id === "gifting" ? "Enquire about gifting" : `Enquire about ${collection.id} coins`}<ArrowUpRight size={18} /></a>
             </div>
           </div>}
         </div>
@@ -177,7 +176,7 @@ const questions = [
 
 export function Faqs() {
   const [open, setOpen] = useState<number | null>(0);
-  return <div className="border-t border-gold/25">{questions.map((item, i) => <div key={item.question} className="border-b border-gold/25"><h3><button type="button" id={`faq-question-${i}`} aria-expanded={open === i} aria-controls={`faq-answer-${i}`} onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between gap-5 py-5 text-left text-base leading-relaxed font-medium transition-colors hover:text-gold-dark"><span>{item.question}</span>{open === i ? <Minus size={17} strokeWidth={1.3} className="shrink-0 text-gold-dark" /> : <Plus size={17} strokeWidth={1.3} className="shrink-0 text-gold-dark" />}</button></h3><div id={`faq-answer-${i}`} role="region" aria-labelledby={`faq-question-${i}`} hidden={open !== i} className="pr-6 pb-6 text-base leading-[1.85] text-muted">{item.answer}</div></div>)}</div>;
+  return <div className="border-t border-line">{questions.map((item, i) => <div key={item.question} className="border-b border-line"><h3><button type="button" id={`faq-question-${i}`} aria-expanded={open === i} aria-controls={`faq-answer-${i}`} onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between gap-5 py-5 text-left text-base leading-relaxed font-medium transition-colors hover:text-gold-dark"><span>{item.question}</span>{open === i ? <Minus size={17} strokeWidth={1.3} className="shrink-0 text-gold-dark" /> : <Plus size={17} strokeWidth={1.3} className="shrink-0 text-gold-dark" />}</button></h3><div id={`faq-answer-${i}`} role="region" aria-labelledby={`faq-question-${i}`} hidden={open !== i} className="pr-6 pb-6 text-base leading-[1.85] text-muted">{item.answer}</div></div>)}</div>;
 }
 
 export function EnquiryForm() {
@@ -223,17 +222,17 @@ export function EnquiryForm() {
     window.open(url, "_blank", "noopener,noreferrer");
   }
 
-  const field = "mt-2 min-h-12 w-full border border-gold/30 bg-white/65 px-3.5 py-3 text-base text-espresso transition-colors placeholder:text-muted/60 hover:border-gold/50 focus:border-gold-dark focus:outline-none focus:ring-2 focus:ring-gold/10";
-  return <div className="rounded-2xl border border-gold/20 bg-white p-6 shadow-[0_8px_40px_#69461e08] sm:p-8"><div className="mb-7 flex items-center justify-between border-b border-gold/15 pb-6"><div><h3 className="font-display text-[31px] tracking-[-0.025em]">Send an enquiry</h3><p className="mt-2 text-base text-muted">Tell us what you’re looking for.</p></div><MessageCircle size={26} strokeWidth={1} className="ml-3 shrink-0 text-gold-dark" /></div>
+  const field = "mt-2 min-h-12 w-full rounded-md border border-charcoal/45 bg-ivory px-3.5 py-3 text-base text-charcoal transition-colors placeholder:text-muted hover:border-gold-dark focus:border-gold-dark focus:outline-none focus:ring-2 focus:ring-gold/25";
+  return <div className="rounded-2xl border border-line bg-white p-6 shadow-sm sm:p-8"><div className="mb-7 flex items-center justify-between border-b border-line pb-6"><div><h3 className="font-display text-[31px] tracking-[-0.025em]">Send an enquiry</h3><p className="mt-2 text-base text-muted">Tell us what you’re looking for.</p></div><MessageCircle size={26} strokeWidth={1} className="ml-3 shrink-0 text-gold-dark" /></div>
     <form ref={form} onSubmit={submit} onChange={() => setEnquiryUrl("")} onInput={event => { if (event.target instanceof HTMLInputElement) event.target.setCustomValidity(""); }}>
       <div className="grid gap-5 sm:grid-cols-2"><label className="text-base font-medium">Your name <span className="text-gold-dark">*</span><input name="name" autoComplete="name" required minLength={2} maxLength={100} placeholder="Full name" className={field} /></label><label className="text-base font-medium">Phone number <span className="text-gold-dark">*</span><input type="tel" name="phone" autoComplete="tel" required minLength={10} maxLength={20} pattern="[+]?[0-9 \(\)\-]{10,20}" title="Enter a phone number with at least 10 digits, optionally including a country code." placeholder="+91  Phone number" className={field} /></label></div>
       <label className="mt-5 block text-base font-medium">Email address <span className="font-normal text-muted">(optional)</span><input type="email" name="email" autoComplete="email" maxLength={200} placeholder="you@example.com" className={field} /></label>
       <label className="mt-5 block text-base font-medium">I’m interested in<span className="relative block"><select name="interest" value={interest} onChange={e => setInterest(e.target.value)} className={`${field} appearance-none pr-10`}>{["Gold Coins", "Silver Coins", "Gifting", "General Enquiry"].map(option => <option key={option}>{option}</option>)}</select><ChevronDown size={15} className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-muted" /></span></label>
       <label className="mt-5 block text-base font-medium">Your message <span className="font-normal text-muted">(optional)</span><textarea name="message" maxLength={2000} rows={3} placeholder="Tell us about the coin or occasion you have in mind." className={`${field} min-h-24 resize-y leading-relaxed`} /></label>
-      <p className="mt-4 text-base leading-[1.8] text-muted">Continue to WhatsApp to review and send your message. <a href="/privacy" className="underline underline-offset-2 hover:text-espresso">Privacy notice</a>.</p>
-      <button type="submit" className="group mt-5 flex min-h-13 w-full items-center justify-center gap-4 rounded-md bg-[#93682f] px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-[#795323]">Continue on WhatsApp <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></button>
+      <p className="mt-4 text-base leading-[1.8] text-muted">Continue to WhatsApp to review and send your message. <a href="/privacy" className="underline underline-offset-2 hover:text-charcoal">Privacy notice</a>.</p>
+      <button type="submit" className="group mt-5 flex min-h-13 w-full items-center justify-center gap-4 rounded-md brand-action px-5 py-3 text-base font-semibold">Continue on WhatsApp <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></button>
       <p className="mt-3 text-center text-base text-muted">A personal conversation. No obligation.</p>
-      {enquiryUrl && <div role="status" className="mt-5 rounded-sm border border-green/15 bg-green/5 p-4"><p className="flex items-center gap-2 text-base font-semibold text-green"><CheckCheck size={16} />Your enquiry is ready in WhatsApp.</p><p className="mt-2 text-base leading-relaxed text-muted">Review your message and tap Send in WhatsApp to reach our team.</p><a href={enquiryUrl} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-base font-semibold text-green">Open your WhatsApp message <ArrowRight size={13} /></a></div>}
+      {enquiryUrl && <div role="status" className="mt-5 rounded-sm border border-whatsapp/15 bg-whatsapp/5 p-4"><p className="flex items-center gap-2 text-base font-semibold text-whatsapp"><CheckCheck size={16} />Your enquiry is ready in WhatsApp.</p><p className="mt-2 text-base leading-relaxed text-muted">Review your message and tap Send in WhatsApp to reach our team.</p><a href={enquiryUrl} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-base font-semibold text-whatsapp">Open your WhatsApp message <ArrowRight size={13} /></a></div>}
     </form>
   </div>;
 }

@@ -29,19 +29,19 @@ npm start
 
 ## Typography and styling
 
-DM Sans and Manrope load **directly from Google Fonts** through the root layout stylesheet link. No downloaded or custom font files are included. If Google Fonts is unavailable, Arial provides the fallback. All text uses at least `text-base` (16px), including labels, captions, navigation, and footer content.
+Castoro and Poppins load **directly from Google Fonts** through the root layout stylesheet link. No downloaded or custom font files are included. The fallbacks are Georgia for headings and Arial for body copy. All text uses at least `text-base` (16px), including labels, captions, navigation, and footer content.
 
-All styling uses Tailwind CSS 4 utilities, theme tokens, and base rules in `src/app/globals.css`. The light palette uses the supplied brand guide as its foundation: warm ivory, antique gold, espresso, champagne, and Deccan green. No dark-mode styles or additional CSS frameworks are used.
+All styling uses Tailwind CSS 4 utilities, theme tokens, and base rules in `src/app/globals.css`. The light palette uses the supplied brand guide as its foundation: gold (`#C3922E`) and charcoal (`#414042`), with ivory surfaces and deeper gold for small text. No dark-mode styles or additional CSS frameworks are used.
 
 ## Source map
 
 - `src/app/page.tsx`: homepage content and section composition.
 - `src/components/landing-interactions.tsx`: navigation, reveal animations, FAQs, and WhatsApp form.
 - `src/components/metal-coin.tsx`: responsive coin compositions using CSS crops of licensed photography.
-- `src/components/logo.tsx`: supplied logo, displayed without altering its original image file.
+- `src/components/logo.tsx`: the supplied horizontal logo from `public/logo.png`.
 - `src/app/layout.tsx`: Google Fonts and site metadata.
 - `src/app/globals.css`: Tailwind 4 theme and accessibility defaults.
-- `public/images/`: locally hosted, licensed photography and the supplied logo.
+- `public/images/`: locally hosted, licensed photography and the Deccan Mint emblem.
 
 The page intentionally uses enquiry-led actions while the online catalogue is being developed. It does not invent prices, customer reviews, purity grades, certification claims, delivery promises, or available inventory. Replace illustrative photography with approved product images when available.
 

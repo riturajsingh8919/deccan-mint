@@ -1,15 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory: #fffdf9;
-  --color-espresso: #322217;
-  --color-gold: #ae8445;
-  --color-gold-dark: #8b6632;
-  --color-champagne: #dec9a1;
-  --color-green: #183c32;
-  --color-muted: #6f6860;
-  --font-sans: "Manrope", Arial, sans-serif;
-  --font-display: "DM Sans", Arial, sans-serif;
+  --color-ivory: #fffdfa;
+  --color-parchment: #f8f5ef;
+  --color-charcoal: #414042;
+  --color-ink: #242224;
+  --color-muted: #605b5b;
+  --color-gold: #c3922e;
+  --color-gold-hover: #b88a2c;
+  --color-gold-dark: #805a15;
+  --color-gold-soft: #f5ebd5;
+  --color-line: #e6ded0;
+  --color-whatsapp: #126a3a;
+  --font-sans: "Poppins", Arial, sans-serif;
+  --font-display: "Castoro", Georgia, serif;
   --animate-enter: enter 900ms ease-out both;
   @keyframes enter {
     from { opacity: 0; transform: translateY(18px); }
@@ -17,11 +21,14 @@
   }
 }
 
+@utility brand-action {
+  @apply bg-gold text-ink transition-colors hover:bg-gold-hover;
+}
+
 @layer base {
   html { scroll-behavior: smooth; scroll-padding-top: 120px; color-scheme: light; }
-  body { background: var(--color-ivory); color: var(--color-espresso); font-family: var(--font-sans); @apply text-base leading-relaxed; }
-  h1, h2, h3 { @apply font-semibold; }
-  ::selection { background: #dec9a180; color: #322217; }
+  body { background: var(--color-ivory); color: var(--color-charcoal); font-family: var(--font-sans); @apply text-base leading-relaxed; }
+  ::selection { background: var(--color-gold-soft); color: var(--color-ink); }
   :focus-visible { outline: 2px solid var(--color-gold-dark); outline-offset: 5px; }
   button, summary, select { cursor: pointer; }
   input, textarea, select { font: inherit; }
