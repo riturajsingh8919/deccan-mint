@@ -11,6 +11,21 @@ npm run dev
 
 Open the URL printed by Next.js, normally http://localhost:3000. For production, run `npm run build` followed by `npm start`. Run `npm run lint` and `npx tsc --noEmit` after the build generates Next.js types.
 
+## Deploy on the VPS
+
+The Docker Compose project uses Hostinger’s `traefik-proxy` network and `letsencrypt` certificate resolver. The app listens on port 3000 inside the Docker network. Traefik handles public HTTPS and redirects `www.deccanmint.com` to `deccanmint.com`.
+
+For the initial deployment, clone the GitHub repository into `/opt/deccan-mint`. From the VPS, pull and deploy updates with:
+
+```sh
+cd /opt/deccan-mint
+git pull --ff-only origin main
+docker compose build --pull
+docker compose up -d --wait
+```
+
+Run `docker compose ps` to check health and `docker compose logs --tail=100 web` to inspect startup output.
+
 ## Update the artwork
 
 The header and footer share `public/logo.png`. The light hero uses `public/images/deccan-coin-campaign.webp`, a 1448 × 1086 ImageGen adaptation of the earlier gold and silver composition. The collection viewer and gifting feature reuse `study-gold.webp`, `study-silver.webp`, and `gifting-atelier.webp` from the dark project. The site labels the artwork as illustrative. The Golconda Fort photo and attribution are available on the site and at `/credits`.

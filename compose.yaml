@@ -1,0 +1,30 @@
+name: deccanmint
+
+services:
+  web:
+    build: .
+    image: deccanmint:production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then(res => process.exit(res.ok ? 0 : 1), () => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - traefik-proxy
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: traefik-proxy
+      traefik.http.routers.deccanmint.rule: 'Host(`deccanmint.com`) || Host(`www.deccanmint.com`)'
+      traefik.http.routers.deccanmint.entrypoints: websecure
+      traefik.http.routers.deccanmint.tls.certresolver: letsencrypt
+      traefik.http.routers.deccanmint.middlewares: deccanmint-canonical
+      traefik.http.middlewares.deccanmint-canonical.redirectregex.regex: '^https://www\.deccanmint\.com(.*)$$'
+      traefik.http.middlewares.deccanmint-canonical.redirectregex.replacement: 'https://deccanmint.com$${1}'
+      traefik.http.middlewares.deccanmint-canonical.redirectregex.permanent: "true"
+      traefik.http.services.deccanmint.loadbalancer.server.port: "3000"
+
+networks:
+  traefik-proxy:
+    external: true
