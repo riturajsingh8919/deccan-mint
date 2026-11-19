@@ -13,7 +13,7 @@ Open the URL printed by Next.js, normally http://localhost:3000. For production,
 
 ## Deploy on the VPS
 
-The Docker Compose project uses Hostinger’s `traefik-proxy` network and `letsencrypt` certificate resolver. The app listens on port 3000 inside the Docker network. Traefik handles public HTTPS and redirects `www.deccanmint.com` to `deccanmint.com`.
+The app listens on port 3000 inside its Compose bridge network. The VPS runs Traefik on the host network, where it can reach the app without publishing port 3000. Traefik uses its `letsencrypt` resolver for public HTTPS and redirects `www.deccanmint.com` to `deccanmint.com`.
 
 For the initial deployment, clone the GitHub repository into `/opt/deccan-mint`. From the VPS, pull and deploy updates with:
 
