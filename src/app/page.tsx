@@ -1,111 +1,269 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowDown, ArrowUpRight, Mail, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
-import { ArrowUpRight, Gem, Gift, Handshake, MessageCircle, Phone } from "lucide-react";
-import { CollectionExplorer, EnquiryForm, Faqs, Header, Reveal } from "@/components/landing-interactions";
+import { CollectionExplorer, EnquiryForm, Faqs, Header } from "@/components/landing-interactions";
+import { business, container, display, eyebrow, inlineAction, navigation, primaryAction } from "@/components/landing-design";
+import { LandingMotion } from "@/components/landing-motion";
 import { Logo } from "@/components/logo";
-import { MetalCoin } from "@/components/metal-coin";
+import coinCampaign from "../../public/images/deccan-coin-campaign.webp";
+import deccanHeritage from "../../public/images/deccan-heritage.jpg";
+import giftingAtelier from "../../public/images/gifting-atelier.webp";
 
 const buyingGuide = [
-  { number: "01", title: "Start with the metal.", text: "Gold or silver? Check the specific coin’s stated purity, fineness, and manufacturer or mint details." },
-  { number: "02", title: "Find the right weight & design.", text: "Think about who it’s for, what it marks, and how you’d like it to be remembered." },
-  { number: "03", title: "Understand the full price.", text: "Confirm the final price, applicable charges, and supporting documentation before you buy." },
+  { title: "Metal and fineness", text: "Check the stated fineness and the mint or manufacturer details for the coin you’re considering." },
+  { title: "Weight and design", text: "Choose a weight and design that suit your collection or the occasion you’re marking." },
+  { title: "Price and documentation", text: "Ask for the final price, any applicable charges, and supporting documentation before buying." },
 ];
+
+function Hero() {
+  return (
+    <section id="home" data-hero aria-labelledby="hero-title" className="overflow-hidden border-b border-line bg-[#f8f3e9]">
+      <div className={`${container} grid items-center gap-7 pt-10 pb-6 sm:gap-9 sm:pt-13 sm:pb-10 lg:grid-cols-[0.96fr_1.04fr] lg:gap-10 lg:py-13 xl:gap-16`}>
+        <div className="relative z-10 pb-1 lg:py-6">
+          <p className={`${eyebrow} mb-4 flex items-center gap-3 sm:mb-6`}>
+            <span aria-hidden="true" className="h-px w-8 origin-left bg-gold motion-safe:animate-hero-rule" />
+            <span className="motion-safe:animate-hero-detail [--hero-delay:90ms]">The Deccan Mint collection</span>
+          </p>
+          <h1 id="hero-title" className={`${display} text-[clamp(2.35rem,10.6vw,4.6rem)] sm:text-[clamp(3.3rem,7.2vw,5.05rem)] lg:text-[clamp(3.25rem,5.25vw,5.45rem)]`}>
+            <span className="-mx-1 block overflow-hidden px-1 pb-[.08em]">
+              <span data-hero-line className="block motion-safe:animate-hero-line [--hero-delay:155ms]">Gold &amp; silver.</span>
+            </span>
+            <span className="-mx-1 -mt-[.06em] block overflow-hidden px-1 pb-[.14em]">
+              <em data-hero-line className="block text-gold-dark motion-safe:animate-hero-line [--hero-delay:305ms]">Worth keeping.</em>
+            </span>
+          </h1>
+          <p className="mt-3 max-w-[28rem] text-base leading-[1.8] text-muted motion-safe:animate-hero-detail [--hero-delay:465ms] sm:mt-5 sm:text-lg">
+            Coins for the collections you build, the people you celebrate, and the moments you want to remember.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 motion-safe:animate-hero-detail [--hero-delay:585ms] focus-within:animate-none sm:mt-8">
+            <a href="#collections" data-landing-link className={primaryAction}>Explore the coins <ArrowUpRight size={18} aria-hidden="true" /></a>
+            <a href="#our-story" data-landing-link className={inlineAction}>Our story <ArrowDown size={17} aria-hidden="true" className="motion-safe:transition-transform motion-safe:group-hover:translate-y-1" /></a>
+          </div>
+        </div>
+        <figure className="relative min-w-0 lg:pt-2">
+          <div data-hero-art className="relative isolate aspect-[1.32] overflow-hidden rounded-[4px] bg-[#efe4d2] lg:aspect-[1.15]">
+            <div data-hero-aperture className="absolute inset-0 overflow-hidden motion-safe:animate-hero-aperture">
+              <div data-hero-drift className="absolute -inset-1 sm:-inset-2">
+                <div data-hero-image className="relative h-full w-full origin-[50%_60%] motion-safe:animate-hero-image">
+                  <Image
+                    src={coinCampaign}
+                    alt="Illustrative gold and silver coins engraved with plateau contours, displayed on pale stone"
+                    fill
+                    preload
+                    placeholder="blur"
+                    sizes="(min-width: 1440px) 660px, (min-width: 1024px) 50vw, 100vw"
+                    className="object-cover object-center"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption className="mt-3 flex justify-end text-base text-muted motion-safe:animate-hero-detail [--hero-delay:700ms] focus-within:animate-none">
+            <Link href="/credits" className="underline decoration-gold/60 underline-offset-4 hover:text-gold-dark">Illustrative coin study</Link>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  );
+}
+
+function Story() {
+  return (
+    <section id="our-story" aria-labelledby="story-title" className="bg-ivory">
+      <div className={`${container} pt-12 pb-13 sm:pt-17 sm:pb-18 lg:pt-22 lg:pb-23`}>
+        <div className="mb-6 grid items-end gap-4 sm:mb-8 md:grid-cols-[1.35fr_1fr] md:gap-9 lg:gap-16">
+          <div data-reveal="text">
+            <p className={`${eyebrow} mb-4`}>Our story</p>
+            <h2 id="story-title" className={`${display} max-w-[730px] text-[clamp(2.7rem,6.5vw,6rem)]`}>Rooted in <em className="inline-block text-gold-dark">the Deccan.</em></h2>
+          </div>
+          <p data-reveal="text" data-reveal-delay="90" className="max-w-[440px] text-base leading-[1.8] text-muted md:justify-self-end md:pb-1">The region gave Deccan Mint its name. Its stone forts, layered plateaus, and living traditions shape how we think about the things people choose to keep.</p>
+        </div>
+        <figure>
+          <div data-story-frame data-reveal="panorama" className="group/reveal relative aspect-[1.52] overflow-hidden rounded-[4px] bg-parchment sm:aspect-[2.05] lg:aspect-[2.75]">
+            <div data-reveal-visual className="absolute inset-0 group-data-[reveal-pending]/reveal:opacity-0">
+              <div data-story-drift className="absolute inset-0 lg:-inset-4">
+                <Image
+                  src={deccanHeritage}
+                  alt="Arched stone ramparts and the approach to Golconda Fort in Hyderabad"
+                  fill
+                  placeholder="blur"
+                  sizes="(min-width: 1440px) 1360px, 100vw"
+                  className="object-cover object-[center_62%] saturate-[.75]"
+                />
+              </div>
+            </div>
+          </div>
+          <figcaption data-reveal="text" className="mt-3 flex items-center gap-2 text-base text-muted">
+            <span aria-hidden="true" className="h-px w-6 bg-gold" /> Golconda Fort, Hyderabad
+          </figcaption>
+        </figure>
+        <div className="mt-6 grid gap-4 border-t border-line pt-6 sm:mt-8 md:grid-cols-[1.35fr_1fr] md:items-start md:gap-9">
+          <p data-reveal="text" className={`${display} text-[clamp(1.6rem,3.2vw,2.9rem)]`}>A tradition carried forward.</p>
+          <div data-reveal="text" data-reveal-delay="90" className="max-w-[440px] md:justify-self-end">
+            <p className="text-base leading-[1.8] text-muted">A brand by Sai Surya Gold, Deccan Mint honours the place of gold and silver in Indian homes through coins for collecting, gifting, and passing on.</p>
+            <a href="#collections" data-landing-link className={`mt-2 ${inlineAction}`}>See the collection <ArrowUpRight size={17} aria-hidden="true" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Collections() {
+  return (
+    <section id="collections" aria-labelledby="collections-title" className="border-y border-line bg-[#f5f0e7]">
+      <div className={`${container} py-12 sm:py-18 lg:py-22`}>
+        <div className="mb-7 grid items-end gap-4 sm:mb-10 md:grid-cols-[1.3fr_1fr] md:gap-8">
+          <div data-reveal="text">
+            <p className={`${eyebrow} mb-4`}>The collection</p>
+            <h2 id="collections-title" className={`${display} text-[clamp(2.7rem,6vw,5.65rem)]`}>Find your kind of <em className="text-gold-dark">precious.</em></h2>
+          </div>
+          <p data-reveal="text" data-reveal-delay="90" className="max-w-[420px] text-base leading-[1.8] text-muted md:justify-self-end md:pb-1">Explore gold and silver, then ask us about available coin designs, weights, and gifting options.</p>
+        </div>
+        <CollectionExplorer />
+      </div>
+    </section>
+  );
+}
+
+function Gifting() {
+  return (
+    <section id="gifting" aria-labelledby="gifting-title" className="bg-ivory">
+      <div className={`${container} py-12 sm:py-17 lg:py-22`}>
+        <div className="grid overflow-hidden rounded-[4px] border border-[#e4d4c9] bg-[#f3e8e0] lg:grid-cols-[1fr_1.08fr]">
+          <div className="flex flex-col items-start justify-center px-5 py-8 sm:px-9 sm:py-10 lg:px-[clamp(2.5rem,4.5vw,5rem)]">
+            <div data-reveal="text">
+              <p className={`${eyebrow} mb-4`}>Coins for gifting</p>
+              <h2 id="gifting-title" className={`${display} text-[clamp(2.5rem,5.15vw,5.15rem)]`}>A gift worth<br /><em className="text-[#865d40]">keeping.</em></h2>
+            </div>
+            <p data-reveal="text" data-reveal-delay="90" className="mt-5 max-w-[390px] text-base leading-[1.8] text-muted">For a wedding, a festival, or a new beginning, choose a gold or silver coin with the person and the occasion in mind.</p>
+            <a data-reveal="text" data-reveal-delay="145" href="#contact" data-landing-link data-interest="Gifting" className={`mt-6 ${primaryAction}`}>Discuss a gift <ArrowUpRight size={18} aria-hidden="true" /></a>
+          </div>
+          <figure data-reveal="image" className="group group/reveal relative aspect-[1.39] overflow-hidden bg-[#381c16] lg:aspect-[1.36]">
+            <div data-reveal-visual className="absolute inset-0 group-data-[reveal-pending]/reveal:opacity-0">
+              <Image
+                src={giftingAtelier}
+                alt="An illustrative gold-toned coin in an open burgundy velvet case with a champagne ribbon"
+                fill
+                placeholder="blur"
+                sizes="(min-width: 1440px) 695px, (min-width: 1024px) 52vw, 100vw"
+                className="object-cover object-[center_53%] motion-safe:transition-transform motion-safe:duration-700 motion-safe:group-hover:scale-[1.035]"
+              />
+            </div>
+            <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/90 to-transparent px-4 pt-12 pb-3 text-base text-white sm:px-6 sm:pb-4">Illustrative gifting concept</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CoinGuide() {
+  return (
+    <section id="coin-guide" aria-labelledby="guide-title" className="border-y border-line bg-[#f5f0e7]">
+      <div className={`${container} grid gap-10 py-13 sm:py-17 lg:grid-cols-2 lg:gap-18 lg:py-22`}>
+        <div>
+          <div data-reveal="text" className="mb-6">
+            <p className={`${eyebrow} mb-4`}>Before you choose</p>
+            <h2 id="guide-title" className={`${display} text-[clamp(2.5rem,5vw,4.65rem)]`}>Know what you’re buying.</h2>
+          </div>
+          <dl className="border-t border-line">
+            {buyingGuide.map(({ title, text }, index) => (
+              <div key={title} data-reveal="text" data-reveal-delay={index * 50} className="border-b border-line py-4">
+                <dt className="text-base font-semibold text-ink">{title}</dt>
+                <dd className="mt-1 text-base leading-[1.7] text-muted">{text}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div id="faqs">
+          <div data-reveal="text" className="mb-6">
+            <p className={`${eyebrow} mb-4`}>Frequently asked questions</p>
+            <h2 className={`${display} text-[clamp(2.5rem,5vw,4.65rem)]`}>Questions, answered.</h2>
+          </div>
+          <Faqs />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" aria-labelledby="contact-title" className="bg-ivory">
+      <div className={`${container} grid gap-8 py-12 sm:py-18 lg:grid-cols-[.91fr_1.09fr] lg:gap-16 lg:py-22`}>
+        <div className="lg:pt-8">
+          <div data-reveal="text">
+            <p className={`${eyebrow} mb-4`}>Speak to Deccan Mint</p>
+            <h2 id="contact-title" className={`${display} max-w-[590px] text-[clamp(2.7rem,6vw,5.45rem)]`}>Let’s talk about your <em className="text-gold-dark">next coin.</em></h2>
+          </div>
+          <p data-reveal="text" data-reveal-delay="90" className="mt-5 max-w-[380px] text-base leading-[1.8] text-muted">Tell us what you have in mind. We can discuss available coins, pricing, and the details that matter to you.</p>
+          <div data-reveal="text" data-reveal-delay="145" className="mt-5 flex flex-wrap items-center gap-x-6">
+            <a href={business.phone} className={inlineAction}><Phone size={16} aria-hidden="true" /> {business.phoneNumber}</a>
+            <a href={`mailto:${business.email}`} className={inlineAction}><Mail size={16} aria-hidden="true" /> {business.email}</a>
+          </div>
+        </div>
+        <EnquiryForm />
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  const link = "inline-flex min-h-10 items-center gap-2 text-base text-muted transition-colors hover:text-gold-dark";
+  return (
+    <footer className="border-t border-line bg-[#f2ede3]">
+      <div className={`${container} pt-9 sm:pt-12`}>
+        <div className="grid gap-x-8 gap-y-6 pb-8 sm:grid-cols-2 lg:grid-cols-[1.3fr_.85fr_1fr]">
+          <div data-reveal="text" className="border-b border-line pb-5 sm:col-span-2 lg:col-span-1 lg:border-b-0 lg:pb-0">
+            <Logo inLanding />
+            <p className="mt-3 max-w-[305px] text-base leading-[1.7] text-muted">Gold and silver coins for collecting, gifting, and passing on.</p>
+          </div>
+          <div data-reveal="text" data-reveal-delay="65">
+            <h2 className="mb-2 text-base font-semibold text-ink">Explore</h2>
+            <nav aria-label="Footer navigation">
+              <ul className="grid grid-cols-2 gap-x-3 lg:grid-cols-1">
+                {navigation.map(({ id, label }) => <li key={id}><a href={`#${id}`} data-landing-link className={link}>{label}</a></li>)}
+              </ul>
+            </nav>
+          </div>
+          <div data-reveal="text" data-reveal-delay="130">
+            <h2 className="mb-2 text-base font-semibold text-ink">Get in touch</h2>
+            <ul>
+              <li><a href={business.phone} className={link}><Phone size={16} aria-hidden="true" />{business.phoneNumber}</a></li>
+              <li><a href={`mailto:${business.email}`} className={link}><Mail size={16} aria-hidden="true" />{business.email}</a></li>
+              <li><a href={business.whatsapp} target="_blank" rel="noreferrer" className={link}><FaWhatsapp size={17} aria-hidden="true" />Chat on WhatsApp</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-x-6 border-t border-line py-4 pr-14 text-base text-muted sm:pr-0">
+          <p>© 2026 Deccan Mint. All rights reserved.</p>
+          <Link href="/privacy" className="inline-flex min-h-10 items-center hover:text-gold-dark">Privacy notice</Link>
+        </div>
+      </div>
+    </footer>
+  );
+}
 
 export default function Home() {
   return (
-    <>
-      <a href="#main" className="sr-only fixed top-4 left-4 z-[100] bg-white px-5 py-3 text-charcoal focus:not-sr-only">Skip to content</a>
+    <div data-landing>
+      <a href="#main" className="sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:px-5 focus:py-3 focus:text-charcoal focus:not-sr-only">Skip to content</a>
       <Header />
-      <main id="main">
-        <section id="home" className="relative overflow-hidden border-b border-line bg-parchment">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_78%_85%,var(--color-gold-soft),transparent_72%)] lg:bg-[radial-gradient(ellipse_at_85%_42%,var(--color-gold-soft),transparent_64%)]" />
-          <div className="relative mx-auto grid max-w-[1440px] items-center gap-6 px-5 pt-12 pb-8 sm:px-10 sm:pt-16 lg:min-h-[570px] lg:grid-cols-[1fr_1.03fr] lg:gap-4 lg:px-14 lg:py-14">
-            <div className="relative z-10 max-w-[600px]">
-              <p className="mb-5 inline-flex items-center gap-3 text-base font-medium tracking-[0.08em] text-gold-dark uppercase"><span className="h-px w-8 bg-gold" />The Deccan Mint collection</p>
-              <h1 className="font-display text-[32px] leading-[1.08] tracking-[-0.02em] min-[360px]:text-[39px] sm:text-[60px] lg:text-[clamp(45px,4.6vw,68px)]">Gold &amp; silver coins.<br /><span className="text-gold-dark">Value you can hold.</span></h1>
-              <p className="mt-6 max-w-[470px] text-base leading-[1.8] text-muted sm:text-lg">Explore gold and silver coins for personal ownership, building your collection, and thoughtful gifting.</p>
-              <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
-                <a href="#collections" data-collection="gold" aria-label="Explore gold coins" className="brand-action inline-flex min-h-14 items-center justify-center gap-2 rounded-md px-3 py-3 text-base font-semibold sm:gap-5 sm:px-5"><span className="sm:hidden">Gold coins</span><span className="hidden sm:inline">Explore gold coins</span><ArrowUpRight size={18} className="shrink-0" /></a>
-                <a href="#collections" data-collection="silver" aria-label="Explore silver coins" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-md border border-gold-dark/45 bg-white/60 px-3 py-3 text-base font-semibold text-charcoal transition-colors hover:border-gold-dark hover:bg-white sm:gap-5 sm:px-5"><span className="sm:hidden">Silver coins</span><span className="hidden sm:inline">Explore silver coins</span><ArrowUpRight size={18} className="shrink-0" /></a>
-              </div>
-            </div>
-            <div className="relative mx-auto aspect-[1.38] w-full max-w-[580px]">
-              <Image src="/images/deccan-mint-emblem.svg" alt="" width={182} height={182} className="pointer-events-none absolute top-0 right-[3%] h-auto w-[64%] opacity-[0.18]" />
-              <div className="absolute top-[5%] left-[6%] w-[61%] -rotate-12"><MetalCoin metal="gold" preload /></div>
-              <div className="absolute right-[3%] bottom-[4%] w-[45%] rotate-12"><MetalCoin metal="silver" preload /></div>
-            </div>
-          </div>
-        </section>
-        <div className="border-b border-line bg-white">
-          <div className="mx-auto grid max-w-[1440px] gap-6 px-5 py-7 sm:px-10 md:grid-cols-3 lg:px-14 lg:py-8">
-            {[{ icon: Gem, title: "Dedicated to gold & silver", text: "Precious-metal coins, thoughtfully chosen" }, { icon: Gift, title: "Gifts with meaning", text: "For festivals, weddings & milestones" }, { icon: Handshake, title: "Personal guidance", text: "A real conversation about your choice" }].map(({ icon: Icon, title, text }) => <div key={title} className="flex items-center gap-4 md:justify-center"><span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-gold-soft text-gold-dark"><Icon size={25} strokeWidth={1.5} /></span><div><p className="text-base font-semibold">{title}</p><p className="mt-1 text-base text-muted">{text}</p></div></div>)}
-          </div>
-        </div>
-
-        <section id="collections" className="mx-auto max-w-[1440px] px-5 py-14 sm:px-10 sm:py-20 lg:px-14">
-          <div className="mb-9 text-center">
-            <p className="mb-3 text-base font-semibold text-gold-dark">GOLD, SILVER &amp; GIFTING</p>
-            <h2 className="font-display text-[34px] leading-tight tracking-[-0.02em] sm:text-[44px]">Find something precious.</h2>
-            <p className="mx-auto mt-4 max-w-[670px] text-base leading-relaxed text-muted">Find gold and silver coins for your collection or a special occasion.</p>
-          </div>
-          <CollectionExplorer />
-        </section>
-
-        <section id="gifting" className="px-5 pb-14 sm:px-10 sm:pb-20 lg:px-14">
-          <div className="mx-auto grid max-w-[1328px] overflow-hidden rounded-2xl border border-line bg-parchment md:grid-cols-[1.05fr_0.95fr]">
-            <div className="px-6 py-10 sm:px-10 lg:px-14 lg:py-14">
-              <p className="mb-4 flex items-center gap-2 text-base font-semibold text-gold-dark"><Gift size={20} />THE GIFT OF SOMETHING PRECIOUS</p>
-              <h2 className="font-display text-[34px] leading-[1.15] tracking-[-0.02em] sm:text-[46px]">For the occasion.<br />For years to come.</h2>
-              <p className="mt-5 max-w-[470px] text-base leading-[1.85] text-muted">A wedding. A festival. A new beginning. Mark it with a gold or silver coin — a gift that carries the thought behind it.</p>
-              <div className="mt-6 flex flex-wrap gap-2">{["Weddings", "Festivals", "Milestones"].map(occasion => <span key={occasion} className="rounded-md border border-line bg-white/60 px-3 py-2 text-base text-charcoal">{occasion}</span>)}</div>
-              <a href="#contact" data-interest="Gifting" className="mt-7 inline-flex min-h-13 items-center gap-6 rounded-md brand-action px-6 py-3 text-base font-semibold">Explore gifting options <ArrowUpRight size={18} /></a>
-            </div>
-            <div className="relative min-h-[310px] overflow-hidden md:min-h-full"><Image src="/images/meaningful-gift.jpg" alt="A carefully wrapped gift with a textured fabric ribbon" fill sizes="(max-width: 768px) 100vw, 45vw" className="object-cover object-[65%_72%] brightness-110 sepia-20" /><div className="absolute inset-0 hidden bg-linear-to-r from-parchment/75 via-transparent to-transparent md:block" /></div>
-          </div>
-        </section>
-
-        <section id="our-story" className="mx-auto max-w-[1440px] px-5 pt-2 pb-14 sm:px-10 sm:pb-20 lg:px-14">
-          <div className="mb-10 grid gap-6 lg:grid-cols-12 lg:gap-10">
-            <div className="lg:col-span-7"><p className="mb-5 text-base font-medium text-gold-dark">ABOUT DECCAN MINT</p><h2 className="max-w-[680px] font-display text-[34px] leading-[1.2] tracking-[-0.025em] sm:text-[44px]">Rooted in heritage.<br />Made for today.</h2></div>
-            <div className="max-w-[490px] self-end lg:col-span-5 lg:pb-1"><p className="text-base leading-[1.9] text-muted">Deccan Mint takes its name from a region shaped by history, artistry, and enduring traditions. That connection guides how we think about gold and silver: as something to own, to give, and to carry forward.</p><p className="mt-4 text-base font-medium text-charcoal">Deccan Mint is a brand by Sai Surya Gold.</p></div>
-          </div>
-          <Reveal>
-            <div className="grid gap-7 md:grid-cols-12 md:gap-10">
-              <figure className="md:col-span-8"><div className="relative h-[280px] overflow-hidden rounded-xl bg-parchment sm:h-[330px] lg:h-[360px]"><Image src="/images/deccan-heritage.jpg" alt="The stone architecture and open grounds of Golconda Fort, Hyderabad" fill sizes="(max-width: 768px) 100vw, 65vw" className="object-cover object-[center_60%] saturate-65" /></div><figcaption className="mt-3 flex flex-col gap-2 text-base text-muted sm:flex-row sm:justify-between sm:gap-4"><span>Golconda Fort, Hyderabad</span><span>The Deccan, our inspiration</span></figcaption></figure>
-              <div className="flex flex-col justify-between border-t border-gold/40 pt-6 md:col-span-4 md:pt-7"><div><p className="text-base font-semibold tracking-[0.08em] text-gold-dark uppercase">The way we see it</p><p className="mt-6 font-display text-[25px] leading-[1.5] tracking-[-0.02em] lg:text-[29px]">A coin’s worth is in its metal.<br />Its meaning is in the reason you chose it.</p></div><div className="mt-8 border-t border-line pt-5"><p className="text-base leading-[1.9] text-muted">Clear product details. Attention to presentation. A conversation about your requirements. These are the details we care about.</p><a href="#contact" className="mt-5 inline-flex items-center gap-4 text-base font-semibold text-gold-dark">Get to know us <ArrowUpRight size={15} /></a></div></div>
-            </div>
-          </Reveal>
-        </section>
-
-        <section className="border-y border-line bg-parchment">
-          <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-14 sm:px-10 sm:py-18 lg:grid-cols-2 lg:gap-16 lg:px-14">
-            <div id="coin-guide">
-              <p className="mb-5 text-base font-medium text-gold-dark">Before you choose</p><h2 className="font-display text-[30px] leading-[1.2] tracking-[-0.025em] sm:text-[36px]">Know what you’re buying.</h2>
-              <div className="mt-8 border-t border-line">{buyingGuide.map(item => <article key={item.number} className="grid grid-cols-[28px_1fr] gap-4 border-b border-line py-6"><p className="pt-1 text-base text-gold-dark">{item.number}</p><div><h3 className="text-base font-medium">{item.title}</h3><p className="mt-2 max-w-[460px] text-base leading-[1.85] text-muted">{item.text}</p></div></article>)}</div>
-              <p className="mt-5 text-base leading-[1.8] text-muted">Need a hand with the details? <a href="tel:+919030609236" className="font-medium text-charcoal underline underline-offset-4">We’re happy to talk.</a></p>
-            </div>
-            <div id="faqs"><p className="mb-5 text-base font-medium text-gold-dark">A little more clarity</p><h2 className="mb-8 font-display text-[30px] leading-[1.2] tracking-[-0.025em] sm:text-[36px]">Questions, answered.</h2><Faqs /></div>
-          </div>
-        </section>
-
-        <section id="contact" className="mx-auto grid max-w-[1440px] gap-10 px-5 py-14 sm:px-10 sm:py-20 lg:grid-cols-12 lg:gap-14 lg:px-14">
-          <div className="lg:col-span-5"><p className="mb-6 text-base font-medium text-gold-dark">A conversation is a good place to start</p><h2 className="font-display text-[40px] leading-[1.15] tracking-[-0.02em] sm:text-[52px]">Let’s talk about<br />your next coin.</h2><p className="mt-6 max-w-[350px] text-base leading-[1.9] text-muted">Tell us what you have in mind. We’ll help you explore the available options and the details that matter to you.</p><div className="mt-8 flex flex-col items-start gap-4"><a href="tel:+919030609236" className="inline-flex items-center gap-3 text-[17px] font-medium transition-colors hover:text-gold-dark"><Phone size={17} strokeWidth={1.5} />+91 90306 09236</a><a href="https://wa.me/919030609236" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-base text-whatsapp"><MessageCircle size={17} strokeWidth={1.5} />Prefer a message? Chat on WhatsApp <ArrowUpRight size={14} /></a></div><p className="mt-10 max-w-[340px] border-t border-line pt-5 text-base leading-[1.85] text-muted">Our full online catalogue is on its way. In the meantime, contact us for available coins, gifting requirements, and product information.</p></div>
-          <div className="lg:col-span-7"><EnquiryForm /></div>
-        </section>
+      <main id="main" tabIndex={-1}>
+        <Hero />
+        <Story />
+        <Collections />
+        <Gifting />
+        <CoinGuide />
+        <Contact />
       </main>
-
-      <footer className="border-t border-line bg-parchment pt-10 pb-6">
-        <div className="mx-auto max-w-[1440px] px-5 sm:px-10 lg:px-14">
-          <div className="grid gap-8 pb-9 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
-            <div><Logo /><p className="mt-4 max-w-[300px] text-base leading-[1.8] text-muted">Precious-metal coins for personal collections, thoughtful gifts, and special occasions.</p></div>
-            <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-x-6 gap-y-3 self-start text-base text-charcoal">{[{ name: "Collections", href: "#collections" }, { name: "Our story", href: "#our-story" }, { name: "Gifting", href: "#gifting" }, { name: "The coin guide", href: "#coin-guide" }, { name: "FAQs", href: "#faqs" }, { name: "Contact", href: "#contact" }].map(item => <a key={item.href} href={item.href} className="transition-colors hover:text-gold-dark">{item.name}</a>)}</nav>
-            <div className="text-base sm:col-span-2 lg:col-span-1 lg:justify-self-end"><p className="mb-3 text-base tracking-[0.1em] text-gold-dark uppercase">Speak to Deccan Mint</p><a href="tel:+919030609236" className="text-[17px] font-medium">+91 90306 09236</a><a href="mailto:info@deccanmint.com" className="mt-2 block text-base text-muted transition-colors hover:text-gold-dark">info@deccanmint.com</a></div>
-          </div>
-          <div className="flex flex-col justify-between gap-3 border-t border-line pt-5 pr-20 text-base text-muted sm:flex-row"><p>© 2026 Deccan Mint. All rights reserved.</p><div className="flex flex-wrap gap-x-5 gap-y-3"><Link href="/privacy" className="hover:text-charcoal">Privacy notice</Link></div></div>
-        </div>
-      </footer>
-      <a href="https://wa.me/919030609236" target="_blank" rel="noopener noreferrer" aria-label="Chat with Deccan Mint on WhatsApp (opens in a new tab)" title="Chat on WhatsApp" className="fixed right-4 bottom-4 z-40 flex size-14 items-center justify-center rounded-full bg-[#168a49] text-white shadow-[0_5px_22px_#168a4933] transition-all hover:-translate-y-1 hover:bg-[#10783d] sm:right-6 sm:bottom-6"><FaWhatsapp size={32} aria-hidden="true" /></a>
-    </>
+      <Footer />
+      <a href={business.whatsapp} target="_blank" rel="noreferrer" aria-label="Chat with Deccan Mint on WhatsApp (opens in a new tab)" title="Chat on WhatsApp" className="fixed right-4 bottom-4 z-40 grid size-13 place-items-center rounded-full bg-[#168a49] text-white shadow-[0_5px_22px_#168a4933] transition-colors hover:bg-[#10783d] motion-safe:transition-[transform,background-color] motion-safe:hover:-translate-y-1 sm:right-6 sm:bottom-6">
+        <FaWhatsapp size={29} aria-hidden="true" />
+      </a>
+      <LandingMotion />
+    </div>
   );
 }

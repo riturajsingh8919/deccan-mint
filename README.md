@@ -1,72 +1,28 @@
 # Deccan Mint
 
-A responsive, light-theme landing page for Deccan Mint, a gold and silver coin brand by Sai Surya Gold. Built in the existing Next.js 16 / React 19 project with Tailwind CSS 4, Lucide React, and the WhatsApp brand icon from React Icons.
+The light landing page for Deccan Mint, a gold and silver coin brand by Sai Surya Gold. It uses Next.js, React, Tailwind CSS 4, GSAP, Lucide React, and React Icons.
 
 ## Run locally
 
-```bash
+```sh
 npm install
 npm run dev
 ```
 
-Open the local URL printed by Next.js, normally http://localhost:3000.
+Open the URL printed by Next.js, normally http://localhost:3000. For production, run `npm run build` followed by `npm start`. Run `npm run lint` and `npx tsc --noEmit` after the build generates Next.js types.
 
-```bash
-npm run build
-npm start
-```
+## Update the artwork
 
-## Experience
+The header and footer share `public/logo.png`. The light hero uses `public/images/deccan-coin-campaign.webp`, a 1448 × 1086 ImageGen adaptation of the earlier gold and silver composition. The collection viewer and gifting feature reuse `study-gold.webp`, `study-silver.webp`, and `gifting-atelier.webp` from the dark project. The site labels the artwork as illustrative. The Golconda Fort photo and attribution are available on the site and at `/credits`.
 
-- Responsive navigation with a keyboard-accessible mobile dialog and active section indicators.
-- Gold-toned product hero with coin artwork composed from licensed photographs, an accessible collection selector, a gifting banner, Deccan heritage story, buyer guidance, FAQs, and a WhatsApp enquiry form.
-- Collection tabs support arrow-key navigation. Hero gold/silver links open the corresponding collection, and collection enquiry links select the matching interest in the form.
-- Calls and WhatsApp enquiries use **+91 90306 09236**.
-- The form validates visitor details, prepares a WhatsApp message, and opens it for the visitor to review and send. It does not send automatically, store submissions, or require a backend. A visible message link remains available if the browser blocks the new tab.
-- Reduced-motion preferences, keyboard focus states, accessible FAQ controls, and a skip link are supported.
-- Metadata, canonical URLs, Open Graph tags, sitemap, and robots use **https://deccanmint.com/**.
-- Privacy notice and photography credits are available at `/privacy` and `/credits`.
+## Navigation, motion, and enquiries
 
-## Typography and styling
+The page moves from the Deccan story into the interactive collection, gifting, buying guidance, and personal enquiries. Tailwind animations start the hero reveal on the first render. GSAP handles the desktop pointer response, and the Golconda Fort photograph moves subtly as its section scrolls into view. The page respects reduced-motion preferences and leaves the root scroll behavior at its browser default. Section anchors opt into smooth scrolling individually. The FAQ uses accessible expandable buttons, and the collection tabs support arrow-key navigation.
 
-Castoro and Poppins load **directly from Google Fonts** through the root layout stylesheet link. No downloaded or custom font files are included. The fallbacks are Georgia for headings and Arial for body copy. All text uses at least `text-base` (16px), including labels, captions, navigation, and footer content.
+Product and gifting links preselect the enquiry topic. The form prepares a WhatsApp message for the visitor to review and send. Visitors can also call or email Deccan Mint directly. No backend or checkout is required.
 
-All styling uses Tailwind CSS 4 utilities, theme tokens, and base rules in `src/app/globals.css`. The light palette uses the supplied brand guide as its foundation: gold (`#C3922E`) and charcoal (`#414042`), with ivory surfaces and deeper gold for small text. No dark-mode styles or additional CSS frameworks are used.
+## Light campaign image prompt
 
-## Source map
+The hero adaptation was produced with the built-in ImageGen tool using the earlier gold and silver study as its edit reference.
 
-- `src/app/page.tsx`: homepage content and section composition.
-- `src/components/landing-interactions.tsx`: navigation, reveal animations, FAQs, and WhatsApp form.
-- `src/components/metal-coin.tsx`: responsive coin compositions using CSS crops of licensed photography.
-- `src/components/logo.tsx`: the supplied horizontal logo from `public/logo.png`.
-- `src/app/layout.tsx`: Google Fonts and site metadata.
-- `src/app/globals.css`: Tailwind 4 theme and accessibility defaults.
-- `public/images/`: locally hosted, licensed photography and the Deccan Mint emblem.
-
-The page intentionally uses enquiry-led actions while the online catalogue is being developed. It does not invent prices, customer reviews, purity grades, certification claims, delivery promises, or available inventory. Replace illustrative photography with approved product images when available.
-
-## Photography
-
-Stock images illustrate the category and gifting story; they do not represent inventory or imply affiliation with pictured mints.
-
-| Local asset | Photographer | Source | License |
-| --- | --- | --- | --- |
-| `gold-editorial.jpg` | Scottsdale Mint | https://unsplash.com/photos/7Sp9T__RDgE | Unsplash License |
-| `gold-detail.jpg` | Zlaťáky.cz | https://unsplash.com/photos/6WPM3xyCXhg | Unsplash License |
-| `bullion-coins.jpg` | Zlaťáky.cz | https://unsplash.com/photos/jgP2-aCuyV0 | Unsplash License |
-| `gold-coins.jpg` | Zlaťáky.cz | https://unsplash.com/photos/i1x77UCEFZI | Unsplash License |
-| `silver-coins.jpg` | Scottsdale Mint | https://unsplash.com/photos/hUqaxjL1Ews | Unsplash License |
-| `deccan-heritage.jpg` | Anand Ramavath | https://unsplash.com/photos/em6e6FJB3oQ | Unsplash License |
-| `meaningful-gift.jpg` | Beyzaa Yurtkuran | https://www.pexels.com/photo/item-tied-with-string-20191566/ | Pexels License |
-
-License terms: https://unsplash.com/license and https://www.pexels.com/license/. The original Deccan Mint logo was supplied by the business.
-
-## Checks
-
-```bash
-npm run lint
-npm run build
-```
-
-Browser checks cover widths from 320px to 1440px, menu opening/closing, FAQ toggles, collection interest selection, form validation, WhatsApp recipient/message composition, image loading, and linked pages.
-# deccan-mint
+Use case: lighting-weather and precise background replacement. Edit the reference coin campaign into a bright, high-end editorial still for the ivory Deccan Mint site. Keep the two same conceptual unbranded coins, gold larger in foreground left at the same angle and silver slightly behind on right, engraved relief of plateau contours and fine ridged edges. Preserve physically credible metal colors. Replace the black stone and dark studio with warm pale limestone, subtle ivory plaster studio gradient, and an elegant stepped off-white travertine plinth low in frame. Use soft but directional morning daylight from upper left so the sculptural coins have clean warm and cool highlights and clear short natural shadows, very light top/side negative space #f5ecdc family, confident refined product photography. Landscape 4:3 ideally, subject group centered horizontally and sitting a bit lower than center, both coins fully visible with at least 11% breathing room horizontally and 15% above, all-important objects inside central 78% to allow square crop. Coin group fills about 68% of width. Big crisp coin faces, no additional objects, no text, logos, watermark, sparkles, ring gadgets, or ornate packaging. Do not make the gold desaturated or yellow plastic; keep sharp metallic edge contrast. Keep the composition photographic, tactile and uncluttered.

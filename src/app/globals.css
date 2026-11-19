@@ -1,39 +1,61 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory: #fffdfa;
+  --color-ivory: #fdfbf7;
   --color-parchment: #f8f5ef;
   --color-charcoal: #414042;
-  --color-ink: #242224;
-  --color-muted: #605b5b;
+  --color-ink: #29241e;
+  --color-muted: #645b51;
   --color-gold: #c3922e;
-  --color-gold-hover: #b88a2c;
   --color-gold-dark: #805a15;
   --color-gold-soft: #f5ebd5;
   --color-line: #e6ded0;
   --color-whatsapp: #126a3a;
   --font-sans: "Poppins", Arial, sans-serif;
   --font-display: "Castoro", Georgia, serif;
-  --animate-enter: enter 900ms ease-out both;
-  @keyframes enter {
-    from { opacity: 0; transform: translateY(18px); }
+}
+
+@theme inline {
+  --animate-hero-line: hero-line-in 920ms cubic-bezier(.21, 1, .31, 1) var(--hero-delay, 0ms) backwards;
+  --animate-hero-detail: hero-detail-in 720ms cubic-bezier(.21, 1, .31, 1) var(--hero-delay, 0ms) backwards;
+  --animate-hero-rule: hero-rule-in 820ms cubic-bezier(.21, 1, .31, 1) 70ms backwards;
+  --animate-hero-aperture: hero-aperture-in 1300ms cubic-bezier(.62, .09, .2, 1) 90ms backwards;
+  --animate-hero-image: hero-image-in 1540ms cubic-bezier(.21, 1, .31, 1) 90ms backwards;
+
+  @keyframes hero-line-in {
+    from { transform: translateY(109%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes hero-detail-in {
+    from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes hero-rule-in {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes hero-aperture-in {
+    from { clip-path: inset(0 92% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+
+  @keyframes hero-image-in {
+    from { transform: scale(1.12); }
+    to { transform: scale(1); }
   }
 }
 
-@utility brand-action {
-  @apply bg-gold text-ink transition-colors hover:bg-gold-hover;
-}
-
 @layer base {
-  html { scroll-behavior: smooth; scroll-padding-top: 120px; color-scheme: light; }
+  html { scroll-padding-top: 96px; color-scheme: light; }
   body { background: var(--color-ivory); color: var(--color-charcoal); font-family: var(--font-sans); @apply text-base leading-relaxed; }
   ::selection { background: var(--color-gold-soft); color: var(--color-ink); }
   :focus-visible { outline: 2px solid var(--color-gold-dark); outline-offset: 5px; }
   button, summary, select { cursor: pointer; }
   input, textarea, select { font: inherit; }
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
 }
